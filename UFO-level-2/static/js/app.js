@@ -37,11 +37,9 @@ liTag.append("label").text("Enter a Shape");
 liTag.append("input").attr("id","shape").attr("class","form-control").attr("placeholder","oval");
 
 // Select date form/button
-var form = d3.select("#form");
 var button = d3.select("#filter-btn")
 
 // Create event handlers
-form.on("submit",runEnter);
 button.on("click",runEnter);
 
 // Complete event handler function
@@ -55,13 +53,13 @@ function runEnter() {
     var inputCountry = d3.select("#country").property("value");
     var inputShape = d3.select("#shape").property("value");
 
-    var filteredData = tableData.filter(filter => filter.datetime === inputDate);
-        //filter.city === inputCity);
-        //filter.state === inputState,
-        //filter.country === inputCountry,
-        //filter.shape === inputShape
-        //);
-    console.log(filteredData);
+    var filteredData = tableData.filter(filter => filter.datetime === inputDate ||
+        filter.city === inputCity ||
+        filter.state === inputState ||
+        filter.country === inputCountry ||
+        filter.shape === inputShape
+        );
+    //console.log(filteredData);
 
     filteredData.forEach(sightings => {
 
